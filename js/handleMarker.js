@@ -6,6 +6,7 @@ AFRAME.registerComponent("handle-marker",{
         })
         this.el.addEventListener("markerLost",()=>{
             console.log("marker lost")
+            document.getElementById("button-div").style.display = "none"
         })
     },
     handleMarkerFound:function(){
