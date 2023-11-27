@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Menu Card</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <!-- We import arjs version without NFT but with marker + location based support -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Local StyleSheet -->
+  <link href="./style.css" rel="stylesheet" />
+
+  <!--Js Files-->
+  <script src="./js/createButtons.js"></script>
+  <script src="./js/handleMarker.js"></script>
+
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene id="main-scene" vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; 
+      sourceWidth:1280; sourceHeight:960; 
+      displayWidth: 1280; displayHeight: 960; 
+      debugUIEnabled: false;" gesture-detector handle-marker create-button>
+    <!-- Camera -->
+        <a-entity camera></a-entity>
+
+        <a-assets>
+          <a-asset-item id="crane" src = "./assets/model/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-marker
+        id="crane-marker"
+        type="pattern"
+        url="assets/marker/T01/pattern-crane.patt"
+        cursor="rayOrigin: mouse"
+        >
+        <a-entity rotation = "0 0 0">
+            <a-entity gltf-model = "#crane" position = "-2 0 0" rotation = "-90 -90 90" scale = "0.001 0.001 0.001"></a-entity>
+            <a-plane position = "3 0 0" rotation = "-90 0 0" width = "2" height = "2" text = "color : black;value:PULL BACK AND GO: Friction powered crane truck toy, 360-degree rotating left and right, machine can pull up & down, swing left & right. High Quality Material: FunBlast crane toy is made of 100% high-quality abs. plastics and metal shovel which is durable, light and Non-Toxic with strong crash resistance AGE:8-10yrs ; align:center">
+              <a-plane position = "0 1 0" rotation = "0 0 0" width = "2" height = "0.5" text = "color : black ;value : Hydraulic Crane ; align:center"></a-plane>
+            </a-plane>
+          </a-entity>
+        </a-marker>
+
+    </a-scene>
+
+  <div id="button-div" class="fixed-bottom"></div>
+
+</body>
+
+</html>
